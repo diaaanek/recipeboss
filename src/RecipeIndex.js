@@ -1,6 +1,7 @@
 import React from "react";
 import RecipeCard from "./RecipeCard";
 import styled from "styled-components";
+import Flippy, { FrontSide, BackSide } from "react-flippy";
 
 const RecipeIndex = ({ recipes, ...props }) => {
   return (
@@ -15,47 +16,65 @@ const RecipeIndex = ({ recipes, ...props }) => {
       <CardContainer>
         {recipes.map((recipe, id) => (
           <CardWrapper>
-            <Image
-              width="250px"
-              height="230px"
-              src={recipe.image}
-              style={{
-                borderTopLeftRadius: "5px",
-                borderTopRightRadius: "5px"
-              }}
-            />
-            <h3 style={{ margin: "0.5rem" }}>{recipe.name}</h3>
-            <Description>
-              <p style={{ margin: "0.5rem", fontSize: "12px" }}>
-                {recipe.description}
-              </p>
-              <p style={{ margin: "0.5rem", fontSize: "12px" }}>
-                {recipe.instructions}
-              </p>
-            </Description>
-
-            <div
-              id="ing-buttons"
-              className="close"
-              style={{
-                position: "absolute",
-                top: "0",
-                right: "2%"
-              }}
-            >
-              {" "}
-              <button
-                style={{ backgroundColor: "Transparent", border: "none" }}
-                className="delete btn"
-                onClick={() => props.deleteRecipe(recipe.id)}
-              >
-                <img
-                  src="https://image.flaticon.com/icons/png/128/148/148766.png"
-                  alt="delete-btn"
-                  style={{ height: "27px", width: "25px", paddingTop: ".25em" }}
+            <Flippy style={{ padding: "0em" }}>
+              <FrontSide>
+                <Image
+                  width="250px"
+                  height="230px"
+                  src={recipe.image}
+                  style={{
+                    borderTopLeftRadius: "5px",
+                    borderTopRightRadius: "5px"
+                  }}
                 />
-              </button>
-            </div>
+                <h3 style={{ margin: "0.5rem" }}>{recipe.name}</h3>
+                <Description>
+                  <p style={{ margin: "0.5rem", fontSize: "12px" }}>
+                    {recipe.description}
+                  </p>
+                  <p style={{ margin: "0.5rem", fontSize: "12px" }}>
+                    {recipe.instructions}
+                  </p>
+                </Description>
+
+                <div
+                  id="ing-buttons"
+                  className="close"
+                  style={{
+                    position: "absolute",
+                    top: "0",
+                    right: "2%"
+                  }}
+                >
+                  {" "}
+                  <button
+                    style={{ backgroundColor: "Transparent", border: "none" }}
+                    className="delete btn"
+                    onClick={() => props.deleteRecipe(recipe.id)}
+                  >
+                    <img
+                      src="https://image.flaticon.com/icons/png/128/148/148766.png"
+                      alt="delete-btn"
+                      style={{
+                        height: "27px",
+                        width: "25px",
+                        paddingTop: ".25em"
+                      }}
+                    />
+                  </button>
+                </div>
+              </FrontSide>
+              <BackSide style={{ padding: "10px" }}>
+                <img
+                  src="https://res.cloudinary.com/dxrvvjvpf/image/upload/v1557869745/50-Restaurant-Icons-02.png"
+                  style={{ height: "50px", width: "50px" }}
+                />
+                <h4>Instructions:</h4>
+                <p style={{ margin: "0.5rem", fontSize: "12px" }}>
+                  {recipe.instructions}
+                </p>
+              </BackSide>
+            </Flippy>
           </CardWrapper>
         ))}
       </CardContainer>{" "}

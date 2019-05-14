@@ -27,8 +27,17 @@ export default [
     name: "Chicken Picatta",
     description: "I don't actually know what Chicken Picatta is",
     instructions:
-      "Make chicken Picatta. I think it has Capers.Make chicken Picatta. I think it has Capers",
+      "Make chicken Picatta. I think it has Capers. Testing testing testing overflow scrolling. Testing testing testing overflow scrolling. ",
     image:
       "https://upload.wikimedia.org/wikipedia/commons/a/a6/Chicken_piccata_dinner_cooking_food.jpg"
+  },
+  {
+    id: 5,
+    name: "Flatiron Burger",
+    description: "A really good burger",
+    instructions:
+      "Who has time to cook when you gotta code? Heat up in microwave ",
+    image:
+      "https://assets3.thrillist.com/v1/image/2797371/size/tmg-article_default_mobile.jpg"
   }
 ];
