@@ -35,6 +35,7 @@ const RecipeCard = recipe => {
         >
           <img
             src="https://image.flaticon.com/icons/png/128/148/148766.png"
+            alt="delete-btn"
             style={{ height: "27px", width: "25px", paddingTop: ".25em" }}
           />
         </button>

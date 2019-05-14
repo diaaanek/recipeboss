@@ -7,6 +7,7 @@ const RecipeIndex = ({ recipes, ...props }) => {
     <div style={{ textAlign: "center" }}>
       <img
         src="https://res.cloudinary.com/dxrvvjvpf/image/upload/v1554317273/illustration-chef-2.svg"
+        alt="chef-logo"
         style={{ height: "5%", width: "5%", paddingTop: "5rem" }}
       />
       <br />
