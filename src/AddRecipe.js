@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 
-const AddRecipeForm = props => {
+const AddRecipe = props => {
   const initialFormState = {
     id: null,
     name: "",
@@ -9,10 +9,12 @@ const AddRecipeForm = props => {
     image: ""
   };
 
+  const [recipe, setRecipe] = useState(initialFormState);
+
   const handleInputChange = event => {
     const { name, value } = event.target;
 
-    setRecipes({ ...recipes, [name]: value });
+    setRecipe({ ...recipe, [name]: value });
   };
 
   return (
@@ -55,7 +57,8 @@ const AddRecipeForm = props => {
         onChange={handleInputChange}
       />
       <br />
-      <label>Image</label>
+      {/* ADD SEARCH FUNCTIONALITY HERE */}
+      <label>Image (url)</label>
       <input
         type="text"
         name="image"
@@ -68,4 +71,4 @@ const AddRecipeForm = props => {
   );
 };
 
-export default AddRecipeForm;
+export default AddRecipe;

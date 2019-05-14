@@ -92,6 +92,13 @@ const CardWrapper = styled.div`
 
   display: inline-block;
   position: relative;
+  :hover {
+    transition: all 0.2s;
+    -o-transition: all 0.2s;
+    -moz-transition: all 0.2s;
+    -webkit-transition: all 0.2s;
+    margin-top: -2px;
+  }
 `;
 
 export const Image = styled.img`
