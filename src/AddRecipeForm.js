@@ -8,7 +8,6 @@ const AddRecipeForm = props => {
     instructions: "",
     image: ""
   };
-  const [recipes, setRecipe] = useState(initialFormState);
 
   const handleInputChange = event => {
     const { name, value } = event.target;

@@ -26,7 +26,8 @@ export default [
     id: 4,
     name: "Chicken Picatta",
     description: "I don't actually know what Chicken Picatta is",
-    instructions: "Make chicken Picatta. I think it has Capers",
+    instructions:
+      "Make chicken Picatta. I think it has Capers.Make chicken Picatta. I think it has Capers",
     image:
       "https://upload.wikimedia.org/wikipedia/commons/a/a6/Chicken_piccata_dinner_cooking_food.jpg"
   }

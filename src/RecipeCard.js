@@ -1,7 +1,7 @@
 import React from "react";
 import styled from "styled-components";
 
-const RecipeCard = recipe => {
+const RecipeCard = (recipe, onDelete) => {
   return (
     <CardWrapper>
       <Image
@@ -11,12 +11,14 @@ const RecipeCard = recipe => {
         style={{ borderTopLeftRadius: "5px", borderTopRightRadius: "5px" }}
       />
       <h3 style={{ margin: "0.5rem" }}>{recipe.name}</h3>
-      <p style={{ margin: "0.5rem", fontSize: "12px", fontFamily: "Avenir" }}>
-        {recipe.description}
-      </p>
-      <p style={{ margin: "0.5rem", fontSize: "12px", fontFamily: "Avenir" }}>
-        {recipe.instructions}
-      </p>
+      <Description>
+        <p style={{ margin: "0.5rem", fontSize: "12px" }}>
+          {recipe.description}
+        </p>
+        <p style={{ margin: "0.5rem", fontSize: "12px" }}>
+          {recipe.instructions}
+        </p>
+      </Description>
 
       <div
         id="ing-buttons"
@@ -31,7 +33,7 @@ const RecipeCard = recipe => {
         <button
           style={{ backgroundColor: "Transparent", border: "none" }}
           className="delete btn"
-          onClick={() => console.log(recipe.id)}
+          onClick={onDelete}
         >
           <img
             src="https://image.flaticon.com/icons/png/128/148/148766.png"
@@ -67,4 +69,12 @@ export const Image = styled.img`
   height: ${p => p.height};
   width: ${p => p.width};
   object-fit: cover;
+`;
+
+export const Description = styled.div`
+  position: relative;
+  overflow: auto;
+  font-family: "Avenir";
+  height: 80px;
+  width: 254px;
 `;

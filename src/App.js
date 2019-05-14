@@ -6,20 +6,28 @@ import NavBar from "./NavBar";
 // import AddRecipeForm from "./AddRecipeForm";
 import recipeData from "./recipes";
 
-function App() {
+const App = () => {
   // useState hook directly inside component (instead of class)
   // declare new state variable... "recipies"
-  const [recipes, setRecipes] = useState([]);
 
+  // fetching data
   useEffect(() => {
     setRecipes(recipeData);
   }, []);
 
-  //  Add Recipe
-  // const addRecipes = recipe => {
-  //   recipe.id = recipe.length + 1;
-  //   setRecipes([...recipes, recipes]);
-  // };
+  // const { addRecipe, deleteRecipe, editRecipe } = useRecipes([]);
+  const [recipes, setRecipes] = useState([]);
+
+  const addRecipe = recipe => {
+    recipe.id = recipes.length + 1;
+    setRecipes([...recipes, recipe]);
+  };
+
+  // useEffect(() => {
+  //   fetch("http://localhost:3001/links/")
+  //     .then(response => response.json())
+  //     .then(data => setData(data));
+  // }, []);
 
   const deleteRecipe = id => {
     setRecipes(recipes.filter(recipe => recipe.id !== id));
@@ -28,26 +36,19 @@ function App() {
   return (
     <div className="App">
       <NavBar />
-      <RecipeForm>
-        <div style={{ textAlign: "center" }}>
-          <img
-            src="https://res.cloudinary.com/dxrvvjvpf/image/upload/v1554317273/illustration-chef-2.svg"
-            alt="chef-logo"
-            style={{ height: "5%", width: "5%" }}
-          />
-        </div>
+      <RecipeFormContainer>
+        <div style={{ textAlign: "center" }} />
         <h2>Add Recipe</h2>
-        {/*} <AddRecipeForm addRecipe={addRecipe} /> */}
-      </RecipeForm>
+      </RecipeFormContainer>
 
       <RecipeIndex recipes={recipes} deleteRecipe={deleteRecipe} />
     </div>
   );
-}
+};
 
 export default App;
 
-const RecipeForm = styled.header`
+const RecipeFormContainer = styled.header`
   padding-top: 5em;
   text-align: center;
 `;
