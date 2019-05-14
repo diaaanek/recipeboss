@@ -21,13 +21,23 @@ const RecipeCard = recipe => {
       <div
         id="ing-buttons"
         className="close"
-        style={{ position: "absolute", top: "0", right: "2%" }}
+        style={{
+          position: "absolute",
+          top: "0",
+          right: "2%"
+        }}
       >
         {" "}
-        <img
-          src="https://image.flaticon.com/icons/png/128/148/148766.png"
-          style={{ height: "27px", width: "25px", paddingTop: ".25em" }}
-        />
+        <button
+          style={{ backgroundColor: "Transparent", border: "none" }}
+          className="delete btn"
+          onClick={() => console.log(recipe.id)}
+        >
+          <img
+            src="https://image.flaticon.com/icons/png/128/148/148766.png"
+            style={{ height: "27px", width: "25px", paddingTop: ".25em" }}
+          />
+        </button>
       </div>
     </CardWrapper>
   );
@@ -37,6 +47,7 @@ export default RecipeCard;
 
 const CardWrapper = styled.div`
   background-color: white;
+
   width: 250px;
   height: 350px;
   cursor: pointer;

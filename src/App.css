@@ -1,13 +1,38 @@
-body {
-  background-color: #fafafa;
+body,
+html {
+  background-color: #f6f6f6;
   font-family: "Montserrat", sans-serif;
   font-size: 1em;
   margin: 0;
   padding: 0;
+  /* background-image: url("https://res.cloudinary.com/dxrvvjvpf/image/upload/v1557798668/bg1.png"); */
+  height: 50%;
+  background-size: cover;
+  /* Center and scale the image nicely */
+
+  background-repeat: no-repeat;
 }
 
 * {
   box-sizing: border-box;
   margin: 0;
   padding: 0;
+}
+
+button {
+  background-color: coral;
+  color: white;
+  border: none;
+  padding: 0.5rem;
+  font-weight: bold;
+  margin-top: 15px;
+  font-size: 1rem;
+  border-radius: 3px;
+}
+
+input {
+  margin: 5px;
+  border-radius: 5px;
+
+  padding: 0.25rem;
 }
