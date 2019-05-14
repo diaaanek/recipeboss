@@ -12,9 +12,9 @@ If you have any questions, don't hesitate to ask! Keep it simple, I don't expect
 
 ## Bugs to Fix
 
-~~ 1. Images on the recipe cards don't all seem to work as expected. Some cards have them, some don't! ~~
-~~ 2. Some recipe cards seem to cut off the recipe text. ~~
-~~ 3. Recipe cards should be in an evenly-distributed grid below the nav, but they sit on top of the nav in a single column! ~~
+~ 1. Images on the recipe cards don't all seem to work as expected. Some cards have them, some don't! ~
+~ 2. Some recipe cards seem to cut off the recipe text. ~
+~ 3. Recipe cards should be in an evenly-distributed grid below the nav, but they sit on top of the nav in a single column! ~
 
 ## Features
 
