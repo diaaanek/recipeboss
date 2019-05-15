@@ -4,14 +4,14 @@ export default [
     name: "Giada's Lasagna",
     description: "Delicious 32 Cheese Lasagne",
     instructions: "Lay down noodles and sauce, bake.",
-    image: "https://live.staticflickr.com/2376/5799408683_9cc6ffc686_b.jpg"
+    image: "Lasagna"
   },
   {
     id: 2,
     name: "Guy's Kickin Chicken",
     description: "This chicken is kickin'",
     instructions: "Put every spice on it and then fry.",
-    image: "https://live.staticflickr.com/4778/40733751321_2ec04268f7_b.jpg"
+    image: "fried-chicken"
   },
   {
     id: 3,
@@ -19,8 +19,7 @@ export default [
     description: "23 flavors and all of them yum.",
     instructions:
       "Marinade steak in Dr. Pepper for 24 hours. Grill to medium rare.",
-    image:
-      "https://upload.wikimedia.org/wikipedia/commons/8/8a/Reindeer_steak.jpg"
+    image: "steak"
   },
   {
     id: 4,
@@ -28,8 +27,7 @@ export default [
     description: "I don't actually know what Chicken Picatta is",
     instructions:
       "Make chicken Picatta. I think it has Capers. Testing testing testing overflow scrolling. Testing testing testing overflow scrolling. ",
-    image:
-      "https://upload.wikimedia.org/wikipedia/commons/a/a6/Chicken_piccata_dinner_cooking_food.jpg"
+    image: "Chicken-piccata"
   },
   {
     id: 5,
@@ -37,7 +35,6 @@ export default [
     description: "A really good burger",
     instructions:
       "Who has time to cook when you gotta code? Heat up in microwave ",
-    image:
-      "https://assets3.thrillist.com/v1/image/2797371/size/tmg-article_default_mobile.jpg"
+    image: "cheeseburger"
   }
 ];

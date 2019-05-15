@@ -22,8 +22,6 @@ export default NavBar;
 NavBar.displayName = "NavBar";
 
 const Header = styled.header`
-  // background-color: #f9ea8f;
-  // background-image: linear-gradient(315deg, #f9ea8f 0%, #aff1da 74%);
   background-color: #4c4177;
   background-image: linear-gradient(315deg, #4c4177 0%, #2a5470 74%);
   position: fixed;
@@ -32,6 +30,7 @@ const Header = styled.header`
   left: 0;
   right: 0;
   height: 50px;
+  z-index: 1;
 `;
 const HeaderMenu = styled.ul`
   margin-top: 10px;

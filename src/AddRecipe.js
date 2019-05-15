@@ -19,6 +19,7 @@ const AddRecipe = props => {
 
   return (
     <form
+      className="flexContainer"
       onSubmit={event => {
         event.preventDefault();
         if (
@@ -38,6 +39,7 @@ const AddRecipe = props => {
         type="text"
         name="name"
         value={recipe.name}
+        placeholder="Blueberry Pie..."
         onChange={handleInputChange}
       />
       <br />
@@ -46,6 +48,7 @@ const AddRecipe = props => {
         type="text"
         name="description"
         value={recipe.description}
+        placeholder="Amazing pie all for yourself or family"
         onChange={handleInputChange}
       />
       <br />
@@ -54,19 +57,22 @@ const AddRecipe = props => {
         type="text"
         name="instructions"
         value={recipe.instructions}
+        placeholder="Place pie in the oven..."
         onChange={handleInputChange}
       />
       <br />
-      {/* ADD SEARCH FUNCTIONALITY HERE */}
-      <label>Image (url)</label>
+
+      <label>Image Term</label>
       <input
         type="text"
         name="image"
+        placeholder="Ex. Pie"
         value={recipe.image}
         onChange={handleInputChange}
       />
       <br />
-      <button>Add new recipe</button>
+
+      <button className="addbtn">Add new recipe</button>
     </form>
   );
 };

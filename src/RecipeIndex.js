@@ -6,22 +6,20 @@ import Flippy, { FrontSide, BackSide } from "react-flippy";
 const RecipeIndex = ({ recipes, ...props }) => {
   return (
     <div style={{ textAlign: "center" }}>
-      <img
-        src="https://res.cloudinary.com/dxrvvjvpf/image/upload/v1554317273/illustration-chef-2.svg"
-        alt="chef-logo"
-        style={{ height: "5%", width: "5%", paddingTop: "5rem" }}
-      />
       <br />
-      <h2 style={{ textAlign: "center" }}> My Recipes </h2>{" "}
+      <p style={{ fontFamily: "Avenir", paddingTop: "10px" }}>
+        {" "}
+        Click on a card to flip it over and view instructions!
+      </p>
       <CardContainer>
         {recipes.map((recipe, id) => (
-          <CardWrapper>
-            <Flippy style={{ padding: "0em" }}>
+          <Flippy style={{ padding: "0em" }}>
+            <CardWrapper>
               <FrontSide>
                 <Image
                   width="250px"
                   height="230px"
-                  src={recipe.image}
+                  src={`https://source.unsplash.com/featured/?${recipe.image}`}
                   style={{
                     borderTopLeftRadius: "5px",
                     borderTopRightRadius: "5px"
@@ -65,17 +63,19 @@ const RecipeIndex = ({ recipes, ...props }) => {
                 </div>
               </FrontSide>
               <BackSide style={{ padding: "10px" }}>
+                <h4>Instructions:</h4>
                 <img
                   src="https://res.cloudinary.com/dxrvvjvpf/image/upload/v1557869745/50-Restaurant-Icons-02.png"
+                  alt="food-logo"
                   style={{ height: "50px", width: "50px" }}
                 />
-                <h4>Instructions:</h4>
+
                 <p style={{ margin: "0.5rem", fontSize: "12px" }}>
                   {recipe.instructions}
                 </p>
               </BackSide>
-            </Flippy>
-          </CardWrapper>
+            </CardWrapper>
+          </Flippy>
         ))}
       </CardContainer>{" "}
     </div>
@@ -91,14 +91,12 @@ const CardContainer = styled.div`
   flex-wrap: wrap;
   justify-content: center;
   margin-left: 30px;
-  margin: 2em auto;
-
+  margin: 1em auto;
   text-rendering: optimizespeed;
 `;
 
 const CardWrapper = styled.div`
   background-color: white;
-
   width: 250px;
   height: 350px;
   cursor: pointer;
@@ -108,7 +106,6 @@ const CardWrapper = styled.div`
   box-shadow: 0 1px 6px rgba(32, 33, 36, 0.28);
   border-radius: 5px;
   overflow: hidden;
-
   display: inline-block;
   position: relative;
   :hover {

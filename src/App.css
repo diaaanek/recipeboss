@@ -3,14 +3,6 @@ html {
   background-color: #f6f6f6;
   font-family: "Montserrat", sans-serif;
   font-size: 1em;
-  margin: 0;
-  padding: 0;
-  /* background-image: url("https://res.cloudinary.com/dxrvvjvpf/image/upload/v1557798668/bg1.png"); */
-  height: 50%;
-  background-size: cover;
-  /* Center and scale the image nicely */
-
-  background-repeat: no-repeat;
 }
 
 * {
@@ -30,22 +22,67 @@ button {
   font-size: 1rem;
   border-radius: 3px;
 }
-button:hover {
-  transition: all 0.2s;
-  -o-transition: all 0.2s;
-  -moz-transition: all 0.2s;
-  -webkit-transition: all 0.2s;
-  margin-top: -1px;
-}
 
 input {
+  font-family: Avenir;
   margin: 5px;
   border-radius: 5px;
-
   padding: 0.25rem;
+  font-size: 1em;
+  padding: 0 6px;
+  padding: 3px;
+  display: inline-block;
+  border: 0;
+  height: 40px;
+  width: 30%;
+  margin: 0;
 }
 
 .flippy-card,
 .flippy-front {
   padding: 0em;
+}
+
+.addbtn {
+  padding: 1em;
+  font-family: Avenir;
+  cursor: pointer;
+  font-size: 1em;
+  padding: 12px;
+  border: 0;
+  margin-bottom: 20px;
+  background: #0099ff;
+  color: #fff;
+  font-weight: bold;
+  box-shadow: 0 1px 6px rgba(32, 33, 36, 0.28);
+  margin: 0 auto;
+  display: block;
+}
+
+.modal {
+  position: fixed;
+  top: 0;
+  right: 0;
+  left: 0;
+  z-index: 1050;
+  border-radius: 5px;
+  width: 30em;
+  margin: 30px auto;
+  outline: 0;
+  padding: 12px;
+  background: #fff;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.5);
+}
+
+.modal input,
+.modal textarea {
+  border: 1px solid #ccc;
+  display: block;
+  margin-top: 6px;
+  width: 100%;
+  margin-left: 0;
+}
+
+.modal textarea {
+  min-height: 60px;
 }
