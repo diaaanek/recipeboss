@@ -9,14 +9,14 @@ import Modal from "./Modal";
 import useModal from "./UseModal";
 
 const App = () => {
-  useEffect(() => {
-    setRecipes(recipeData);
-  }, []);
-
   // const { addRecipe, deleteRecipe } = useRecipes([]);
   const [recipes, setRecipes] = useState([]);
   const [addingRecipe, setAddingRecipe] = useState(false);
   const { isShowing, toggle } = useModal();
+
+  useEffect(() => {
+    setRecipes(recipeData);
+  }, []);
 
   const initialFormState = {
     id: null,
@@ -26,6 +26,7 @@ const App = () => {
     image: ""
   };
 
+  // add recipe
   const addRecipe = recipe => {
     recipe.id = recipes.length + 1;
     setRecipes([...recipes, recipe]);
