@@ -18,14 +18,6 @@ const App = () => {
     setRecipes(recipeData);
   }, []);
 
-  const initialFormState = {
-    id: null,
-    name: "",
-    decription: "",
-    instructions: "",
-    image: ""
-  };
-
   // add recipe
   const addRecipe = recipe => {
     recipe.id = recipes.length + 1;

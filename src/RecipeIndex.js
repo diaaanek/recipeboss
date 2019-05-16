@@ -13,8 +13,8 @@ const RecipeIndex = ({ recipes, ...props }) => {
       </p>
       <CardContainer>
         {recipes.map((recipe, id) => (
-          <Flippy style={{ padding: "0em" }}>
-            <CardWrapper>
+          <CardWrapper>
+            <Flippy style={{ padding: "0em" }}>
               <FrontSide>
                 <Image
                   width="250px"
@@ -74,8 +74,8 @@ const RecipeIndex = ({ recipes, ...props }) => {
                   {recipe.instructions}
                 </p>
               </BackSide>
-            </CardWrapper>
-          </Flippy>
+            </Flippy>
+          </CardWrapper>
         ))}
       </CardContainer>{" "}
     </div>
