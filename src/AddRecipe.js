@@ -1,8 +1,5 @@
 import React, { useState } from "react";
-import Unsplash from "unsplash-js";
-
-// using unsplash wrapper
-// https://github.com/unsplash/unsplash-js
+import { fetchImages } from "./unsplashapi";
 
 const AddRecipe = props => {
   const initialFormState = {
@@ -15,12 +12,26 @@ const AddRecipe = props => {
 
   const [recipe, setRecipe] = useState(initialFormState);
 
+  const [searchResults, setSearchResults] = useState(null);
+  const [clickedImage, setClickedImage] = useState(null);
+
   const handleInputChange = event => {
     const { name, value } = event.target;
 
     setRecipe({ ...recipe, [name]: value });
   };
 
+  const searchImage = event => {
+    fetchImages(recipe.image).then(results =>
+      setSearchResults(results.results)
+    );
+  };
+
+  const chosenImage = event => {
+    setClickedImage(event.target.src);
+  };
+
+  console.log(searchResults);
   return (
     <form
       className="flexContainer"
@@ -34,7 +45,7 @@ const AddRecipe = props => {
         )
           return;
 
-        props.addRecipe(recipe);
+        props.addRecipe({ ...recipe, image: clickedImage });
         setRecipe(initialFormState);
       }}
     >
@@ -74,9 +85,33 @@ const AddRecipe = props => {
         value={recipe.image}
         onChange={handleInputChange}
       />
+      <div className="images">
+        {searchResults
+          ? searchResults.map(image => (
+              <img
+                style={{ height: "25%", width: "25%" }}
+                key={image.id}
+                src={image.urls.thumb}
+                alt={image.alt_description}
+                onClick={chosenImage}
+              />
+            ))
+          : null}
+      </div>
+
+      <button
+        className="addbtn"
+        type="button"
+        onClick={searchImage}
+        style={{ marginTop: "1em" }}
+      >
+        Search an Image
+      </button>
       <br />
 
-      <button className="addbtn">Add new recipe</button>
+      <button className="addbtn" style={{ marginBottom: "1em" }}>
+        Add New Recipe
+      </button>
     </form>
   );
 };
