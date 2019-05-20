@@ -2,7 +2,7 @@ import React from "react";
 import styled from "styled-components";
 import Flippy, { FrontSide, BackSide } from "react-flippy";
 
-// destructuring // collect operator
+// DESTRUCTURING // COLLECT OPERATOR // **
 const RecipeCard = ({ deleteRecipe, ...recipe }) => {
   return (
     <CardWrapper>
@@ -38,6 +38,25 @@ const RecipeCard = ({ deleteRecipe, ...recipe }) => {
           >
             {" "}
             <button
+              id="editbtn"
+              style={{
+                backgroundColor: "Transparent",
+                border: "none",
+                paddingRight: "5px"
+              }}
+              className="edit btn"
+            >
+              <img
+                src="https://upload.wikimedia.org/wikipedia/commons/thumb/e/ec/Circle-icons-pencil_2.svg/512px-Circle-icons-pencil_2.svg.png"
+                alt="edit-btn"
+                style={{
+                  height: "28px",
+                  width: "27px",
+                  paddingTop: ".25em"
+                }}
+              />
+            </button>
+            <button
               style={{ backgroundColor: "Transparent", border: "none" }}
               className="delete btn"
               onClick={() => deleteRecipe(recipe.id)}
@@ -55,14 +74,16 @@ const RecipeCard = ({ deleteRecipe, ...recipe }) => {
           </div>
         </FrontSide>
         <BackSide style={{ padding: "10px" }}>
-          <h4>Instructions:</h4>
           <img
             src="https://res.cloudinary.com/dxrvvjvpf/image/upload/v1557869745/50-Restaurant-Icons-02.png"
             alt="food-logo"
             style={{ height: "50px", width: "50px" }}
           />
+          <h4>Instructions:</h4>
 
-          <p style={{ margin: "0.5rem", fontSize: "12px" }}>
+          <p
+            style={{ margin: "0.5rem", fontSize: "12px", fontFamily: "Avenir" }}
+          >
             {recipe.instructions}
           </p>
         </BackSide>
@@ -85,7 +106,6 @@ const CardWrapper = styled.div`
   border-radius: 5px;
   overflow: hidden;
   display: inline-block;
-  position: relative;
   :hover {
     transition: all 0.2s;
     -o-transition: all 0.2s;

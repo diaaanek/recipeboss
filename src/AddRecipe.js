@@ -1,7 +1,8 @@
 import React, { useState } from "react";
 import { fetchImages } from "./unsplashapi";
 
-const AddRecipe = props => {
+const AddRecipe = (props, isShowing, hide) => {
+  // initial state with empty values
   const initialFormState = {
     id: null,
     name: "",
@@ -15,26 +16,30 @@ const AddRecipe = props => {
   const [searchResults, setSearchResults] = useState(null);
   const [clickedImage, setClickedImage] = useState(null);
 
+  // event => function to update state in form
+  // *** Object destructuring get name and key value
   const handleInputChange = event => {
     const { name, value } = event.target;
-
     setRecipe({ ...recipe, [name]: value });
   };
 
+  // event for user search on image input field
   const searchImage = event => {
     fetchImages(recipe.image).then(results =>
       setSearchResults(results.results)
     );
   };
 
+  // set clicked for chosen image from unsplash results
   const chosenImage = event => {
     setClickedImage(event.target.src);
   };
 
   console.log(searchResults);
+
+  // submitting form back to App (passed down as props)
   return (
     <form
-      className="flexContainer"
       onSubmit={event => {
         event.preventDefault();
         if (
@@ -43,7 +48,7 @@ const AddRecipe = props => {
           !recipe.instructions ||
           !recipe.image
         )
-          return;
+          return alert("Enter all fields below!");
 
         props.addRecipe({ ...recipe, image: clickedImage });
         setRecipe(initialFormState);
@@ -89,7 +94,12 @@ const AddRecipe = props => {
         {searchResults
           ? searchResults.map(image => (
               <img
-                style={{ height: "25%", width: "25%" }}
+                className="selected-img"
+                style={{
+                  height: "100px",
+                  width: "100px",
+                  margin: "7px"
+                }}
                 key={image.id}
                 src={image.urls.thumb}
                 alt={image.alt_description}
@@ -100,6 +110,7 @@ const AddRecipe = props => {
       </div>
 
       <button
+        id="searchbtn"
         className="addbtn"
         type="button"
         onClick={searchImage}

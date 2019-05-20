@@ -1,12 +1,6 @@
 // using unsplash wrapper
 // https://github.com/unsplash/unsplash-js
 
-// unsplash.search.photos("dogs", 1)
-//   .then(toJson)
-//   .then(json => {
-//     // Your code
-//   });
-
 import Unsplash from "unsplash-js";
 
 const unsplash = new Unsplash({
@@ -15,29 +9,13 @@ const unsplash = new Unsplash({
   callbackUrl: "http://localhost:3000/"
 });
 
+// created a resuable function "fetchImages" for unsplash api
+//
 export const fetchImages = keyword => {
   return unsplash.search
-    .photos(keyword, 1, 5)
+    .photos(keyword, 1, 4)
     .then(response => response.json());
 };
 
 // global scope
 window.fetchImages = fetchImages;
-//
-// const urlParams = new URLSearchParams(window.location.search);
-//
-// console.log({ urlParams });
-//
-// if (urlParams.get("code")) {
-//   unsplash.auth
-//     .userAuthentication(urlParams.get("code"))
-//     .then(r => r.json())
-//     .then(json => {
-//       unsplash.auth.setBearerToken(json.access_token);
-//       window.__unsplash = unsplash;
-//     });
-// } else {
-//   const authenticationUrl = unsplash.auth.getAuthenticationUrl(["public"]);
-//
-//   window.location = authenticationUrl;
-// }

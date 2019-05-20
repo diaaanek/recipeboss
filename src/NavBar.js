@@ -7,10 +7,10 @@ const NavBar = ({ links, ...props }) => {
     <Header>
       <HeaderMenu>
         <HeaderItem>
-          <Icon size="small" alt="sauce" src={sauceIcon} />
+          <Icon size="small" alt="recipeboss-logo" src={sauceIcon} />
         </HeaderItem>
 
-        <HeaderItem>Recipes</HeaderItem>
+        <HeaderItem>RecipeBoss</HeaderItem>
 
         <HeaderItem>User@RecipeBoss.com</HeaderItem>
       </HeaderMenu>
