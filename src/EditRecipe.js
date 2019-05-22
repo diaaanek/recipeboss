@@ -1,26 +1,12 @@
 import React, { useState } from "react";
 import { fetchImages } from "./unsplashapi";
 
-const AddRecipe = (props) => {
+const EditRecipe = (props, isShowing, hide) => {
+  const [recipe, setRecipe] = useState(props.currentRecipe);
 
-  // initial state with empty values
-  const initialFormState = {
-    id: null,
-    name: "",
-    description: "",
-    instructions: "",
-    image: ""
-  };
-
-// set recipe state to empty values
-  const [recipe, setRecipe] = useState(initialFormState);
-
-// unsplash
   const [searchResults, setSearchResults] = useState(null);
   const [clickedImage, setClickedImage] = useState(null);
 
-  // event => function to update state in form
-  // *** Object destructuring get name and key value from form
   const handleInputChange = event => {
     const { name, value } = event.target;
     setRecipe({ ...recipe, [name]: value });
@@ -37,24 +23,14 @@ const AddRecipe = (props) => {
   const chosenImage = event => {
     setClickedImage(event.target.src);
   };
-  console.log(searchResults);
 
-  // submitting form back onsubmit
+  // submitting form back to App (passed down as props)
   return (
     <form
       onSubmit={event => {
         event.preventDefault();
-        if (
-          !recipe.name ||
-          !recipe.description ||
-          !recipe.instructions ||
-          !recipe.image
-        )
-          return alert("Enter all fields below!");
 
-        props.addRecipe({ ...recipe, image: clickedImage });
-        setRecipe(initialFormState);
-
+        props.updateRecipe(recipe.id);
       }}
     >
       <label>Recipe Name</label>
@@ -62,7 +38,6 @@ const AddRecipe = (props) => {
         type="text"
         name="name"
         value={recipe.name}
-        placeholder="Blueberry Pie..."
         onChange={handleInputChange}
       />
       <br />
@@ -71,7 +46,6 @@ const AddRecipe = (props) => {
         type="text"
         name="description"
         value={recipe.description}
-        placeholder="Amazing pie all for yourself or family"
         onChange={handleInputChange}
       />
       <br />
@@ -80,7 +54,6 @@ const AddRecipe = (props) => {
         type="text"
         name="instructions"
         value={recipe.instructions}
-        placeholder="Place pie in the oven..."
         onChange={handleInputChange}
       />
       <br />
@@ -89,7 +62,6 @@ const AddRecipe = (props) => {
       <input
         type="text"
         name="image"
-        placeholder="Ex. Pie"
         value={recipe.image}
         onChange={handleInputChange}
       />
@@ -119,17 +91,19 @@ const AddRecipe = (props) => {
         onClick={searchImage}
         style={{ marginTop: "1em" }}
       >
-        Search an Image <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/4/4a/Unsplash_wordmark_logo.svg/1280px-Unsplash_wordmark_logo.svg.png" alt="unsplash-logo" style={{width: "60px"}}/>
+        Search an Image
       </button>
       <br />
 
       <button
-        className="addbtn" style={{ marginBottom: "1em" }}>
-        Add New Recipe
+        onClick={() => props.setEditedRecipe(false)}
+        className="addbtn"
+        style={{ marginBottom: "1em" }}
+      >
+        Update Recipe
       </button>
-
     </form>
   );
 };
 
-export default AddRecipe;
+export default EditRecipe;

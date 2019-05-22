@@ -3,30 +3,39 @@ import RecipeIndex from "./RecipeIndex";
 import "./App.css";
 import styled from "styled-components";
 import NavBar from "./NavBar";
-import SearchBar from "./SearchBar";
+// import SearchBar from "./SearchBar";
 
 import recipeData from "./recipes";
 import Modal from "./Modal";
 import useModal from "./UseModal";
 
-const App = () => {
-  // getter and setter for each type of state - no limit
+function App() {
+  const initialFormState = {
+    id: null,
+    name: "",
+    description: "",
+    instructions: "",
+    image: ""
+  };
+
   // recipes replaces this.state and setRecipes replace this.setState
   const [recipes, setRecipes] = useState([]);
 
-  // custom Hook for Modal
   const { isShowing, toggle } = useModal();
 
-  // side effects, similar to componentDidMount, acccepts function we want to run and second empty array
+  const [editingRecipe, setEditingRecipe] = useState(false)
+  const [clickedRecipe, setClickedRecipe] = useState(initialFormState)
+
+  // componentDidMount // acccepts function we want to run and second empty array
   useEffect(() => {
     setRecipes(recipeData);
   }, []);
 
-  // add recipe (auto-incrementing id)
   // ...recipes array of objects, ensures prev recipes remain intact
   const addRecipe = recipe => {
     recipe.id = recipes.length + 1;
     setRecipes([...recipes, recipe]);
+    console.log(recipes);
   };
 
   // delete recipe takes id of recipe and filter out of recipe array
@@ -35,27 +44,41 @@ const App = () => {
     setRecipes(recipes.filter(recipe => recipe.id !== id));
   };
 
-  // *** TODO: when user inputs something into the search bar //
-  const handleSearchInputChange = event => {
-    let text = event.target.value;
-    let results;
-    if (text.length > 1)
-      results = recipes.filter(recipes =>
-        recipes.name.includes(text.toLowerCase())
-      );
-    else results = recipes;
-    setRecipes(results);
-    console.log(results);
-  };
+// for button to pass current recipe info into state
+  const editRecipe = recipe => {
+    setEditingRecipe(true)
+    setClickedRecipe({id: recipe.id, name: recipe.name, description: recipe.description, instructions: recipe.instructions, image: recipe.image})
+  }
+
+  // updated recipe object and id
+  // ternary map through users and find one we want to update
+  const updateRecipe = (id, updatedRecipe) => {
+    setEditingRecipe(false)
+    setRecipes(recipes.map(recipe => (recipe.id === id ? updatedRecipe : recipe )))
+  }
+  // *** TODO: when user inputs something into the search bar
+  // const handleSearchInputChange = event => {
+  //   let text = event.target.value;
+  //   let results;
+  //
+  //   if (text.length > 1)
+  //     results = recipes.filter(recipes =>
+  //       recipes.name.includes(text.toLowerCase())
+  //     );
+  //   else results = recipes;
+  //
+  //   console.log(results);
+  // };
 
   return (
     <div className="App">
       <NavBar />
       <RecipeHeader>
         <h2> My Recipes </h2>{" "}
-        <div style={{ textAlign: "center" }}>
           {/* Adding and testing new features for fun */}
-          {/* }<SearchBar handleSearchInputChange={handleSearchInputChange} /> */}
+        {/* }<SearchBar handleSearchInputChange={handleSearchInputChange} /> */}
+
+        <br/>
           <img
             src="https://res.cloudinary.com/dxrvvjvpf/image/upload/v1557895433/chef.png"
             alt="chef-logo"
@@ -71,7 +94,6 @@ const App = () => {
             alt="chef-logo"
             style={{ height: "5%", width: "5%" }}
           />{" "}
-        </div>
       </RecipeHeader>
 
       {/* open modal -> add recipe form */}
@@ -79,13 +101,19 @@ const App = () => {
         Add Recipe
       </button>
 
-      <Modal isShowing={isShowing} addRecipe={addRecipe} hide={toggle} />
+      <Modal
+        isShowing={isShowing}
+        addRecipe={addRecipe}
+        hide={toggle} />
 
-      {/* recipe container + delete handler + eventually EDIT functionality */}
-      <RecipeIndex recipes={recipes} deleteRecipe={deleteRecipe} />
+      {/* recipe container + delete handler */}
+      <RecipeIndex
+        recipes={recipes}
+        editRecipe={editRecipe}
+        deleteRecipe={deleteRecipe} />
     </div>
   );
-};
+}
 
 export default App;
 

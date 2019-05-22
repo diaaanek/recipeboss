@@ -12,7 +12,7 @@ html {
 }
 
 button {
-  color: white;
+
   border: none;
   /* padding: 0.5rem; */
   font-weight: bold;
@@ -77,8 +77,6 @@ input {
 }
 .searchbtn:hover {
   background: #0099ff;
-}
-.modal-overlay {
 }
 
 .modal {

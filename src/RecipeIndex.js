@@ -4,8 +4,7 @@ import NativeAd from "./NativeAd";
 import styled from "styled-components";
 
 // collect operator
-const RecipeIndex = ({ recipes, deleteRecipe, ...props }) => {
-  console.log(props);
+const RecipeIndex = ({ recipes, editRecipe, deleteRecipe, ...props }) => {
   return (
     <div style={{ textAlign: "center" }}>
       <br />
@@ -17,7 +16,13 @@ const RecipeIndex = ({ recipes, deleteRecipe, ...props }) => {
         <NativeAd />
 
         {recipes.map((recipe, id) => (
-          <RecipeCard key={id} {...recipe} deleteRecipe={deleteRecipe} />
+          <RecipeCard
+            key={id}
+            {...recipe}
+            deleteRecipe={deleteRecipe}
+            editRecipe={editRecipe}
+
+          />
         ))}
       </CardContainer>{" "}
     </div>

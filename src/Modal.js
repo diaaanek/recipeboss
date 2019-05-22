@@ -2,10 +2,11 @@ import React from "react";
 import ReactDOM from "react-dom";
 
 import AddRecipe from "./AddRecipe";
+// import EditRecipe from "./EditRecipe";
 
 // createPortal => render children outside the main DOM heirarchy of parent component w/o losing react context
-// use portal to mount modal compoent to end of document.body element rather than a child of other compoent
-const Modal = ({ isShowing, hide, addRecipe }) =>
+// use portal to mount modal compoent to end of document.body element rather than a child of other component
+const Modal = ({  isShowing, hide, addRecipe}) =>
   isShowing
     ? ReactDOM.createPortal(
         <React.Fragment>
@@ -32,7 +33,8 @@ const Modal = ({ isShowing, hide, addRecipe }) =>
 
             <p>
               {" "}
-              <AddRecipe addRecipe={addRecipe} isShowing={isShowing} />
+                <AddRecipe addRecipe={addRecipe} onClick={hide} isShowing={isShowing} />
+
             </p>
           </div>
         </React.Fragment>,

@@ -22,7 +22,7 @@ const NativeAd = () => {
         />
         <h3 style={{ margin: "0.5rem" }}>“Hooked” on Hooks</h3>
         <Description>
-          <p style={{ margin: "0.5rem", fontSize: "12px" }}>
+          <p style={{ margin: "0.5rem", fontSize: "12px", color: "navy" }}>
             *Sponsored Content* by Diane
           </p>
           <p

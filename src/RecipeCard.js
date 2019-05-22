@@ -3,92 +3,107 @@ import styled from "styled-components";
 import Flippy, { FrontSide, BackSide } from "react-flippy";
 
 // DESTRUCTURING // COLLECT OPERATOR // **
-const RecipeCard = ({ deleteRecipe, ...recipe }) => {
+const RecipeCard = ({ editRecipe, deleteRecipe, ...recipe }) => {
   return (
-    <CardWrapper>
-      <Flippy style={{ padding: "0em" }}>
-        <FrontSide>
-          <Image
-            width="250px"
-            height="230px"
-            src={recipe.image}
-            style={{
-              borderTopLeftRadius: "5px",
-              borderTopRightRadius: "5px"
-            }}
-          />
-          <h3 style={{ margin: "0.5rem" }}>{recipe.name}</h3>
-          <Description>
-            <p style={{ margin: "0.5rem", fontSize: "12px" }}>
-              {recipe.description}
-            </p>
-            <p style={{ margin: "0.5rem", fontSize: "12px" }}>
+    <div>
+      <CardWrapper>
+        <Flippy style={{ padding: "0em" }}>
+          <FrontSide>
+            <Image
+              width="250px"
+              height="230px"
+              src={recipe.image}
+              style={{
+                borderTopLeftRadius: "5px",
+                borderTopRightRadius: "5px"
+              }}
+            />
+            <h3 style={{ margin: "0.5rem" }}>{recipe.name}</h3>
+            <Description>
+              <p style={{ margin: "0.5rem", fontSize: "12px" }}>
+                {recipe.description}
+              </p>
+              <p style={{ margin: "0.5rem", fontSize: "12px" }}>
+                {recipe.instructions}
+              </p>
+            </Description>
+          </FrontSide>
+
+          <BackSide style={{ padding: "10px" }}>
+            <img
+              src="https://res.cloudinary.com/dxrvvjvpf/image/upload/v1557869745/50-Restaurant-Icons-02.png"
+              alt="food-logo"
+              style={{ height: "50px", width: "50px" }}
+            />
+            <h4>Instructions:</h4>
+
+            <p
+              style={{
+                margin: "0.5rem",
+                fontSize: "12px",
+                fontFamily: "Avenir"
+              }}
+            >
               {recipe.instructions}
             </p>
-          </Description>
+          </BackSide>
+        </Flippy>
+      </CardWrapper>
 
-          <div
-            id="ing-buttons"
-            className="close"
-            style={{
-              position: "absolute",
-              top: "0",
-              right: "2%"
+      <div className="button-container" style={{ padding: "1" }}>
+        <img
+          src="https://cdn.shopify.com/s/files/1/0080/8372/products/tattly_classic_red_heart_team_tattly_00_1024x1024@2x.png?v=1531940498"
+          alt="heart-button"
+          style={{
+            height: "50px",
+            width: "50px",
+            backgroundColor: "white",
+            padding: "5px",
+            marginRight: "0.25rem",
+            borderRadius: "50%"
+          }}
+        />
+          <button
+            onClick={() => {
+              editRecipe(recipe)
+              alert(recipe.name)
             }}
+            id="editbtn"
+            style={{
+              backgroundColor: "Transparent",
+              border: "none",
+              paddingRight: "5px"
+            }}
+            className="edit-btn"
           >
-            {" "}
-            <button
-              id="editbtn"
+            <img
+              src="https://upload.wikimedia.org/wikipedia/commons/thumb/e/ec/Circle-icons-pencil_2.svg/512px-Circle-icons-pencil_2.svg.png"
+              alt="edit-button"
               style={{
-                backgroundColor: "Transparent",
-                border: "none",
-                paddingRight: "5px"
+                height: "52px",
+                width: "50px",
+                paddingTop: ".25em"
               }}
-              className="edit btn"
-            >
-              <img
-                src="https://upload.wikimedia.org/wikipedia/commons/thumb/e/ec/Circle-icons-pencil_2.svg/512px-Circle-icons-pencil_2.svg.png"
-                alt="edit-btn"
-                style={{
-                  height: "28px",
-                  width: "27px",
-                  paddingTop: ".25em"
-                }}
-              />
-            </button>
-            <button
-              style={{ backgroundColor: "Transparent", border: "none" }}
-              className="delete btn"
-              onClick={() => deleteRecipe(recipe.id)}
-            >
-              <img
-                src="https://image.flaticon.com/icons/png/128/148/148766.png"
-                alt="delete-btn"
-                style={{
-                  height: "27px",
-                  width: "25px",
-                  paddingTop: ".25em"
-                }}
-              />
-            </button>
-          </div>
-        </FrontSide>
-        <BackSide style={{ padding: "10px" }}>
-          <img
-            src="https://res.cloudinary.com/dxrvvjvpf/image/upload/v1557869745/50-Restaurant-Icons-02.png"
-            alt="food-logo"
-            style={{ height: "50px", width: "50px" }}
-          />
-          <h4>Instructions:</h4>
+            />
+          </button>
 
-          <p
-            style={{ margin: "0.5rem", fontSize: "12px", fontFamily: "Avenir" }}
+          <button
+            style={{ backgroundColor: "Transparent", border: "none" }}
+            className="delete btn"
+            onClick={() => deleteRecipe(recipe.id)}
           >
-            {recipe.instructions}
-          </p>
-        </BackSide>
-      </Flippy>
-    </CardWrapper>
+          <img
+            src="https://image.flaticon.com/icons/png/128/148/148766.png"
+            alt="delete-button"
+            style={{
+              height: "52px",
+              width: "50px",
+              paddingTop: ".25em"
+            }}
+          />
+        </button>
+      </div>
+    </div>
   );
 };
 
